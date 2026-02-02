@@ -1,9 +1,18 @@
 ﻿import React from "react";
 import ProductCard from "@/components/ProductCard";
 
+const products = [
+  {
+    name: "",
+    availableColors: [],
+    image: "",
+    
+  }
+]
 const shopPage = () => {
+
   return (
-    <div className="pt-32 ">
+    <div className="pt-32">
       <h2 className="text-center text-[1.2rem] md:text-[1.6rem] font-semibold text-red-900">
         Fe<span className="border-b-3">atured Collectio</span>ns
       </h2>
