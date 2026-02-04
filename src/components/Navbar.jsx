@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 const navOptions = [
   {
     text: "Home",
@@ -22,6 +22,9 @@ const navOptions = [
 ];
 const Navbar = ({ links = navOptions }) => {
   const pathname = usePathname();
+  const [cartQuantity, setCartQuantity] = useState(88)
+
+
   return (
     <section
       id="nav"
@@ -40,13 +43,19 @@ const Navbar = ({ links = navOptions }) => {
           {links.map((link, idx) => (
             <li key={idx}>
               <Link
-                className={`${pathname === link.path ? "text-red-600 underline " : ""} hover:text-red-600 hover:underline underline-offset-4`}
+                className={`${pathname === link.path ? "text-red-600  border-b" : ""} flex gap-1 items-center hover:text-red-600 hover:border-b underline-offset-4`}
                 href={link.path}
               >
-                {link.text}
+                <span>{link.text}</span>
+                {link.text === "Cart" && (
+                  <span className="border  p-0 rounded bg-red-400 text-red-200 text-[.6rem] px-1 font-semibold">
+                    {cartQuantity}
+                  </span>
+                )}
               </Link>
             </li>
           ))}
+          <li></li>
         </ul>
       </div>
     </section>
