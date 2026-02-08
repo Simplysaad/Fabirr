@@ -3,7 +3,7 @@
 import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 
-export default async function getCartSession() {
+export default async function getSession() {
   const session = await getIronSession(cookies(), {
     password: process.env.COOKIE_PASSWORD,
     cookieName: "cart-session",

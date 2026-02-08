@@ -28,7 +28,7 @@ const Navbar = ({ links = navOptions }) => {
   return (
     <section
       id="nav"
-      className="backdrop-blur min-w-screen text-red-900 fixed top-0 px-4 lg:px-16 flex gap-16 items-center py-6 justify-between"
+      className="backdrop-blur z-10 min-w-screen text-red-900 fixed top-0 px-4 lg:px-16 flex gap-16 items-center py-6 justify-between"
     >
       <div className="nav-brand  font-semibold">
         <Link

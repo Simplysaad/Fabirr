@@ -1,5 +1,5 @@
 ﻿import { revalidatePath } from "next/cache";
-import getCartSession from "./session";
+import getSession from "./session";
 
 
 // {
@@ -11,7 +11,7 @@ import getCartSession from "./session";
 // }
 
 export async function addToCart({ productId, quantity = 1, color, amount }) {
-  const session = await getCartSession();
+  const session = await getSession();
   const existingItem = session.cart.find(
     (item) => item.productId === productId && item.color === color
   );
@@ -27,7 +27,7 @@ export async function addToCart({ productId, quantity = 1, color, amount }) {
 }
 
 export async function removeFromCart({ productId, color }) {
-  const session = await getCartSession();
+  const session = await getSession();
   session.cartItems = session.cart.filter(
     (item) => item.productId !== productId && item.color !== color
   );
@@ -37,7 +37,7 @@ export async function removeFromCart({ productId, color }) {
 }
 
 export async function updateCartQuantity({ productId, quantity = 1, color }) {
-  const session = await getCartSession();
+  const session = await getSession();
   const existingItem = session.cart.find(
     (item) => item.productId === productId && item.color === color
   );
