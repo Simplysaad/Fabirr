@@ -1,6 +1,6 @@
 import ProductCard from "@/components/ProductCard";
 import TestimonialCard from "@/components/TestimonialCard";
-import { insertProducts } from "@/lib/db";
+import { getAllProducts, insertProducts } from "@/lib/db";
 import Product from "@/lib/models/product";
 import newProducts from "@/lib/seed";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import Link from "next/link";
 const Homepage = async () => {
   // Fetching directly from DB on the server
 
-  const products = await Product.find().limit(4).lean();
+  const products = await getAllProducts();
   // const products = await insertProducts(newProducts);
 
   return (
@@ -26,7 +26,7 @@ const Homepage = async () => {
           <p className="text-lg md:text-xl text-gray-700 max-w-md">
             Discover our curated collection of silk, chiffon, and jersey
             scarves. Crafted with care, designed for elegance.
-          </p>  
+          </p>
           <Link
             href="/shop"
             className="inline-block bg-red-400 hover:bg-red-500 text-white text-lg px-8 py-3 rounded transition-colors duration-300"
@@ -53,11 +53,16 @@ const Homepage = async () => {
             ions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:w-[75%] center">
-          {/* <div className="flex grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:w-[75%] justify-center border"> */}
+            {/* <div className="flex grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:w-[75%] justify-center border"> */}
             {products?.map((product, idx) => (
+              // product.name
               <ProductCard
                 key={product._id?.toString() || idx}
-                product={product}
+                product={{
+                  ...product,
+                  _id: product._id.toString(),
+                  colors: product.colors.map((c)=>({...c, _id: c._id.toString()}))
+                }}
               />
             ))}
           </div>

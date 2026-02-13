@@ -24,10 +24,25 @@ export async function insertProducts(products = newProducts, clear = true) {
 
 
     const newProducts = await Product.insertMany(products);
-    console.log(newProducts, `${newProducts.length} products inserted`);
+    console.log(`${newProducts.length} products inserted`);
 
     return newProducts
   } catch (err) {
     console.error(err);
   }
 }
+
+
+export async function getAllProducts() {
+  try {
+    await connectDB();
+    const allProducts = await Product.find().lean()
+    console.log(`${allProducts.length} products retrieved`);
+
+    return allProducts
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
