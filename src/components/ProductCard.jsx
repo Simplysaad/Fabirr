@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
           className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
         />
 
-        {/* Quick Add Overlay */}
+        {/* Quick Add Overlay */} 
         <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-white/80 backdrop-blur-sm">
           <div className="text-center py-2 bg-red-900 text-white text-xs uppercase tracking-widest hover:bg-black transition-colors">
             View Details

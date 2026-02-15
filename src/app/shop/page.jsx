@@ -67,11 +67,11 @@
 
 import React from "react";
 import ProductCard from "@/components/ProductCard";
-import { Product } from "@/lib/db";
+import { getAllProducts } from "@/lib/db";
 
 const ShopPage = async () => {
   // Fetch products from database
-  const allProducts = await Product.find().lean();
+  const allProducts = await getAllProducts();
 
   // Group products by category (Material)
   const categories = ["Silk Scarves", "Cashmere Wraps", "Linen Collection"];
@@ -118,21 +118,13 @@ const ShopPage = async () => {
                   ? categoryProducts.map((product) => (
                       <ProductCard
                         key={product._id.toString()}
-                        {...product}
+                        product={{ ...product }}
                         cart
                         nodesc
                       />
                     ))
                   : // Fallback for demo if no DB products match the category
-                    [...Array(5)].map((_, idx) => (
-                      <ProductCard
-                        key={idx}
-                        cart
-                        nodesc
-                        name="Exquisite Scarf"
-                        price={25000}
-                      />
-                    ))}
+                    null}
               </div>
             </section>
           );

@@ -4,8 +4,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export default async function ProductDetails({ params }) {
-//   await connectDB();
-//   const { id } = await params;
+  await connectDB();
+  const { id } = await params;
   const product = await Product.findById(id).lean();
 
   if (!product) notFound();
