@@ -1,15 +1,18 @@
-﻿import "./globals.css";
+﻿import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import getSession from "@/lib/session";
 
-export default function RootLayout({ children }) {
+export default async function StoreLayout({ children }) {
+  const session = await getSession();
+  const initialCartCount = session.cartItems?.length || 0;
+
   return (
-    <html lang="en">
-      <body className="bg-gradient-to-r from-red-100 to-red-300">
-        <Navbar/>
-        {children}
-        <Footer/>
-      </body>
-    </html>
+    <>
+      {/* Pass the count directly to your Navbar */}
+      <Navbar cartCount={initialCartCount} />
+      <main>{children}</main>
+      <Footer />
+    </>
   );
 }

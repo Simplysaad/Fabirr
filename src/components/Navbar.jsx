@@ -1,8 +1,9 @@
 ﻿"use client";
 
+import getSession from "@/lib/session";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 const navOptions = [
   {
     text: "Home",
@@ -20,22 +21,66 @@ const navOptions = [
     isActive: false
   }
 ];
-const Navbar = ({ links = navOptions }) => {
-  const pathname = usePathname();
-  const [cartQuantity, setCartQuantity] = useState(88)
 
+const adminOptions = [
+  {
+    text: "overview",
+    path: "/",
+    isActive: false
+  },
+  {
+    text: "orders",
+    path: "/shop",
+    isActive: false
+  },
+  {
+    text: "customers",
+    path: "/cart",
+    isActive: false
+  },
+  {
+    text: "inventory",
+    path: "/cart",
+    isActive: false
+  }
+];
+
+const Navbar = ({ links, cartCount = 0 }) => {
+  const pathname = usePathname();
+  const [cartQuantity, setCartQuantity] = useState(cartCount);
+
+  // useEffect(() => {
+  //   // Define the async function inside
+  //   const fetchSession = async () => {
+  //     try {
+  //       const session = await getSession();
+  //       console.log(session);
+
+  //       if (session?.cartItems) {
+  //         setCartQuantity(session.cartItems.length);
+  //       }
+  //     } catch (err) {
+  //       console.error("Failed to load session:", err);
+  //     }
+  //   };
+
+  //   fetchSession(); // Execute it
+  // }, []); // Empty dependency array means it runs once on mount
+
+  let isAdminPath = pathname.split("/").includes("admin");
+  links = isAdminPath ? [] : navOptions;
 
   return (
     <section
       id="nav"
-      className="backdrop-blur z-10 min-w-screen text-red-900 fixed top-0 px-4 lg:px-16 flex gap-16 items-center py-6 justify-between"
+      className="backdrop-blur fixed z-10 min-w-screen text-red-900  top-0 px-4 lg:px-16 flex gap-16 items-center py-6 justify-between"
     >
       <div className="nav-brand  font-semibold">
         <Link
           href="/"
           className="nav-brand-text text-red-900 text-[1.5rem] font-sans"
         >
-          FABIRR
+          {isAdminPath ? "FABIRR ADMIN" : "FABIRR"}
         </Link>
       </div>
       <div className="nav-options">

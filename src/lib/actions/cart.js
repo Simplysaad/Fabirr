@@ -1,27 +1,30 @@
-﻿import { revalidatePath } from "next/cache";
-import getSession from "./session";
-
+﻿"use server";
+// cart.js
+import { revalidatePath } from "next/cache";
+import getSession from "../session";
 
 export async function addToCart({ productId, quantity = 1, color, amount }) {
   const session = await getSession();
-  const existingItem = session.cart.find(
+  const existingItem = session.cartItems.find(
     (item) => item.productId === productId && item.color === color
   );
 
   if (existingItem) {
-    existingItem.qty += qty;
+    existingItem.quantity += quantity;
   } else {
     session.cartItems.push({ color, productId, quantity, amount });
   }
-
+  
   await session.save();
+  console.log(session)
   revalidatePath("/cart");
 }
 
 export async function removeFromCart({ productId, color }) {
   const session = await getSession();
-  session.cartItems = session.cart.filter(
-    (item) => item.productId !== productId && item.color !== color
+
+  session.cartItems = session.cartItems.filter(
+    (item) => item.productId !== productId || item.color !== color
   );
 
   await session.save();
@@ -30,14 +33,14 @@ export async function removeFromCart({ productId, color }) {
 
 export async function updateCartQuantity({ productId, quantity = 1, color }) {
   const session = await getSession();
-  const existingItem = session.cart.find(
+  const existingItem = session.cartItems.find(
     (item) => item.productId === productId && item.color === color
   );
 
   if (existingItem) {
     existingItem.quantity = quantity;
     if (existingItem.quantity === 0) {
-      session.cartItems = session.cart.filter(
+      session.cartItems = session.cartItems.filter(
         (item) => item.productId !== productId && item.color !== color
       );
     }
