@@ -5,7 +5,7 @@ import React from "react";
 const Footer = () => {
   return (
     // to-red-400 from-red-300 bg-gradient-to-r
-   <footer className="bg-white border-t py-12 px-8 md:px-16">
+   <footer className="bg-white py-12 px-8 md:px-16">
         <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
             <h3 className="text-2xl font-bold text-red-900 mb-4">FABIRR</h3>
