@@ -56,7 +56,7 @@ export default function InteractiveProductView({ product }) {
   return (
     <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
       {/* LEFT: DYNAMIC IMAGE SECTION */}
-      <section className="stick top-32 h-fit">
+      <section className="sticky top-32 h-fit">
         <div className="relative aspect-[4/5] bg-stone-100 overflow-hidden rounded-sm border border-stone-100">
           <Image
             src={`/scarves/${mainImage || "placeholder.png"}`}

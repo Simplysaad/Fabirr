@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import ProductCard from "@/components/SmartProductCard";
+import SmartProductCard from "@/components/SmartProductCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import { getAllProducts, insertProducts } from "@/lib/db";
 import Product from "@/lib/models/product";

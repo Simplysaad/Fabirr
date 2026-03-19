@@ -59,7 +59,7 @@ export default function SmartProductCard({ product }) {
         ))}
         {product.colors.length > 6 && (
           <Link
-            href={`/shop/${product._id}`}
+            href={`/products/${product._id}`}
             className="text-[10px] flex items-center text-stone-400 hover:text-red-900"
           >
             +{product.colors.length - 6} More
@@ -69,7 +69,7 @@ export default function SmartProductCard({ product }) {
 
       {/* 4. ACTION */}
       <Link
-        href={`/shop/${product._id}`}
+        href={`/products/${product._id}`}
         className="mt-6 block w-full border border-red-900 text-red-900 py-3 text-xs uppercase tracking-[0.2em] font-bold hover:bg-red-900 hover:text-white transition-all text-center"
       >
         Explore Collection
