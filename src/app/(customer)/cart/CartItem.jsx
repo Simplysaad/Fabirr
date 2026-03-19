@@ -1,13 +1,14 @@
-﻿import React from "react";
+﻿"use client"
+import React from "react";
 import Image from "next/image";
-import { removeFromCart } from "@/actions/cart";
+import { removeFromCart } from "@/lib/actions/cart";
 
 const CartItem = ({ item }) => {
   const { title, color, quantity, amount, image, productId } = item;
   return (
     <div className="cart-item  flex items-center gap-2 border rounded border-red-300 shadow  py-1 px-2">
-      {/* <div className="cart-item-image h-16 w-auto p-2 overflow-hidden">
-        <Image alt={title} src={image} height={50} width={50} />
+      <div className="cart-item-image h-16 w-auto p-2 overflow-hidden">
+        <Image alt={title || "random product"} src={image || "/test.png"} height={50} width={50} />
       </div>
       <div className="cart-item-info flex gap- items-end w-full justify-between">
         <div className="flex flex-col">
@@ -26,7 +27,7 @@ const CartItem = ({ item }) => {
         onClick={() => removeFromCart(item)}
       >
         x
-      </div> */}
+      </div>
     </div>
   );
 };

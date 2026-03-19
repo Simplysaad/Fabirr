@@ -17,3 +17,11 @@ const CartSchema = new Schema({
 });
 
 const Cart = models.cart || model("cart", CartSchema);
+
+  // {
+  //     title: "Silk Scarf",
+  //     color: "Royal Gold",
+  //     quantity: 1,
+  //     amount: 12000,
+  //     image: "/hero.png"
+  //   }

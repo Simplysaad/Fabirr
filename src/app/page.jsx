@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/SmartProductCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import { getAllProducts, insertProducts } from "@/lib/db";
 import Product from "@/lib/models/product";
@@ -25,11 +25,14 @@ const Homepage = async () => {
         >
           <div className="hero-text md:w-[50%] space-y-6">
             <h1 className="text-red-900 text-4xl md:text-6xl font-serif leading-tight">
-              Wrap In Elegance. <br /> Extrude Elegant Fragrance.
+              Drape Yourself in Royalty.
             </h1>
             <p className="text-lg md:text-xl text-gray-700 max-w-md">
-              Discover our curated collection of silk, chiffon, and jersey
-              scarves. Crafted with care, designed for elegance.
+              Heritage craftsmanship meets modern grace. Discover our curated
+              silk, chiffon, and jersey collections—designed for the Queen who
+              leads with elegance.
+
+              {/* Discover our curated collection of silk, chiffon, and jersey scarves. Crafted with care, designed for elegance. */}
             </p>
             <Link
               href="/shop"
@@ -60,8 +63,7 @@ const Homepage = async () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:w-[75%] center">
               {/* <div className="flex grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:w-[75%] justify-center border"> */}
               {products?.map((product, idx) => (
-                // product.name
-                <ProductCard
+                <SmartProductCard
                   key={product._id?.toString() || idx}
                   product={{
                     ...product,
@@ -73,42 +75,44 @@ const Homepage = async () => {
                   }}
                 />
               ))}
+
+              
             </div>
           </div>
         </section>
 
         {/* 3. BRAND STORY (New) */}
         {/* <section
-        id="brandStory"
-        className="py-20 px-8 md:px-16 container mx-auto grid md:grid-cols-2 gap-12 items-center"
-      >
-        <div className="relative h-[500px] bg-red-50 rounded-2xl overflow-hidden">
-          <Image
-            src="/hero.jpg"
-            alt="Craftsmanship"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="space-y-6">
-          <h2 className="text-3xl font-serif text-red-900">
-            The FABIRR Heritage
-          </h2>
-          <p className="text-gray-600 leading-relaxed">
-            Every FABIRR piece is a testament to timeless craftsmanship. From
-            the high-altitude plains where we source our cashmere to the artisan
-            studios where silk is hand-printed, we believe in "Slow Fashion."
-            Our scarves aren't just accessories; they are heirlooms designed to
-            be passed down through generations of Queens.
-          </p>
-          <Link
-            href="/about"
-            className="text-red-900 font-semibold border-b-2 border-red-900 pb-1 hover:text-red-700 transition-all"
-          >
-            Read Our Story
-          </Link>
-        </div>
-      </section> */}
+          id="brandStory"
+          className="py-20 px-8 md:px-16 container mx-auto grid md:grid-cols-2 gap-12 items-center"
+        >
+          <div className="relative h-[500px] bg-red-50 rounded-2xl overflow-hidden">
+            <Image
+              src="/hero.jpg"
+              alt="Craftsmanship"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-3xl font-serif text-red-900">
+              The FABBIRR Heritage
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              Every FABIRR piece is a testament to timeless craftsmanship. From
+              the high-altitude plains where we source our cashmere to the
+              artisan studios where silk is hand-printed, we believe in "Slow
+              Fashion." Our scarves aren't just accessories; they are heirlooms
+              designed to be passed down through generations of Queens.
+            </p>
+            <Link
+              href="/about"
+              className="text-red-900 font-semibold border-b-2 border-red-900 pb-1 hover:text-red-700 transition-all"
+            >
+              Read Our Story
+            </Link>
+          </div>
+        </section> */}
 
         {/* 4. TESTIMONIALS */}
         <section

@@ -10,11 +10,11 @@ const navOptions = [
     path: "/",
     isActive: false
   },
-  {
-    text: "Shop",
-    path: "/shop",
-    isActive: false
-  },
+  // {
+  //   text: "Shop",
+  //   path: "/shop",
+  //   isActive: false
+  // },
   {
     text: "Cart",
     path: "/cart",
@@ -28,11 +28,11 @@ const adminOptions = [
     path: "/",
     isActive: false
   },
-  {
-    text: "orders",
-    path: "/shop",
-    isActive: false
-  },
+  // {
+  //   text: "orders",
+  //   path: "/shop",
+  //   isActive: false
+  // },
   {
     text: "customers",
     path: "/cart",
@@ -45,27 +45,9 @@ const adminOptions = [
   }
 ];
 
-const Navbar = ({ links, cartCount = 0 }) => {
+const Navbar = ({ links, cartCount }) => {
   const pathname = usePathname();
   const [cartQuantity, setCartQuantity] = useState(cartCount);
-
-  // useEffect(() => {
-  //   // Define the async function inside
-  //   const fetchSession = async () => {
-  //     try {
-  //       const session = await getSession();
-  //       console.log(session);
-
-  //       if (session?.cartItems) {
-  //         setCartQuantity(session.cartItems.length);
-  //       }
-  //     } catch (err) {
-  //       console.error("Failed to load session:", err);
-  //     }
-  //   };
-
-  //   fetchSession(); // Execute it
-  // }, []); // Empty dependency array means it runs once on mount
 
   let isAdminPath = pathname.split("/").includes("admin");
   links = isAdminPath ? [] : navOptions;
@@ -80,7 +62,7 @@ const Navbar = ({ links, cartCount = 0 }) => {
           href="/"
           className="nav-brand-text text-red-900 text-[1.5rem] font-sans"
         >
-          {isAdminPath ? "FABIRR ADMIN" : "FABIRR"}
+          {isAdminPath ? "FABBIRR ADMIN" : "FABBIRR"}
         </Link>
       </div>
       <div className="nav-options">
@@ -92,9 +74,9 @@ const Navbar = ({ links, cartCount = 0 }) => {
                 href={link.path}
               >
                 <span>{link.text}</span>
-                {link.text === "Cart" && (
+                {link.text.toLowerCase() === "cart" && (
                   <span className="border  p-0 rounded bg-red-400 text-red-200 text-[.6rem] px-1 font-semibold">
-                    {cartQuantity}
+                    {cartQuantity || 0}
                   </span>
                 )}
               </Link>

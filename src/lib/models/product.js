@@ -25,7 +25,7 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
     lowercase: true,
-    enum: ["jersey scarf", "silk scarf", "chiffon scarf"]
+    enum: ["jersey scarf", "silk scarf", "chiffon scarf", "inner cap"]
   },
   image: String,
   description: String,

@@ -5,6 +5,7 @@ import { Plus, Minus, ShoppingBag } from "lucide-react";
 import { addToCart } from "@/lib/actions/cart"; // Assuming this is your action import
 
 export default function InteractiveProductView({ product }) {
+  console.log("product", product);
   const [mainImage, setMainImage] = useState(product.image);
   const [selections, setSelections] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -20,20 +21,29 @@ export default function InteractiveProductView({ product }) {
 
   const handleAddToCartClick = async () => {
     const itemsToProcess = product.colors.filter((c) => selections[c._id] > 0);
-
     setIsLoading(true);
+
     try {
       await Promise.all(
-        itemsToProcess.map((color) =>
-          addToCart({
+        itemsToProcess.map(async (color) => {
+          // You MUST return this promise for Promise.all to track it
+
+          let cartItem = {
+            name: product.name,
+            amount: product.price * selections[color._id], // total for this variant
+            image: "/scarves/" + color.image,
             productId: product._id,
             quantity: selections[color._id],
             color: color.name,
             price: product.price
-          })
-        )
+          };
+
+          return await addToCart(cartItem);
+        })
       );
+
       setSelections({});
+      // Optional: Add a success toast here
     } catch (error) {
       console.error("Cart error:", error);
     } finally {
@@ -97,7 +107,7 @@ export default function InteractiveProductView({ product }) {
                   <div>
                     <p className="font-medium text-stone-800">{color.name}</p>
                     <p className="text-[10px] text-stone-400 uppercase tracking-widest">
-                     xyz
+                      xyz
                     </p>
                   </div>
                 </div>

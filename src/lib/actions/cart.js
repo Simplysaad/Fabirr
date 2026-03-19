@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import getSession from "../session";
 
-export async function addToCart({ productId, quantity = 1, color, amount }) {
+export async function addToCart({ name, productId, quantity = 1, color, amount }) {
   const session = await getSession();
   const existingItem = session.cartItems.find(
     (item) => item.productId === productId && item.color === color
@@ -12,11 +12,11 @@ export async function addToCart({ productId, quantity = 1, color, amount }) {
   if (existingItem) {
     existingItem.quantity += quantity;
   } else {
-    session.cartItems.push({ color, productId, quantity, amount });
+    session.cartItems.push({ name, color, productId, quantity, amount });
   }
   
   await session.save();
-  console.log(session)
+  // console.log(session)
   revalidatePath("/cart");
 }
 
