@@ -7,7 +7,7 @@ export default async function connectDB() {
 
     if (!conn) throw new Error("Unable to connect to database");
 
-    console.log(`Successfully connected to ${conn.host}`);
+    console.log(`Successfully connected to ${conn.connection.host}`);
   } catch (err) {
     console.error(err);
   }
