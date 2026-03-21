@@ -14,7 +14,7 @@ import Footer from "@/components/Footer";
 // });
 
 export const metadata = {
-  title: "FABIRR - Quality scarves, crafted with elegance",
+  title: "FABBIRR - Quality scarves, crafted with elegance",
   description: "Quality scarves, crafted with elegance"
 };
 
