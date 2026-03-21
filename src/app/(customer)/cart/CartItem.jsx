@@ -7,7 +7,7 @@ import { X } from "lucide-react";
 const CartItem = ({ item }) => {
   const { name, color, quantity, amount, image, productId } = item;
   return (
-    <div className="cart-item flex items-center gap-2 border rounded border-red-300 shadow  py-1 px-2">
+    <div className="cart-item font-serif flex items-center gap-2 border rounded border-red-300 shadow  py-1 px-2">
       <div className="cart-item-image border rounded shadow-2xl h-16 w-auto p-1 overflow-hidden">
         <Image
           alt={name || "random product"}

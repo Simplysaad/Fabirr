@@ -55,7 +55,7 @@ const page = async () => {
             <div className="pt-6 border-t border-stone-200 flex justify-between items-end">
               <span className="text-lg font-serif">Total</span>
               <span className="text-2xl font-serif text-red-900">
-                {/* ₦{subtotal?.toLocaleString()} */}
+                ₦{subtotal?.toLocaleString()}
               </span>
             </div>
 

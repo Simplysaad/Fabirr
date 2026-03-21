@@ -25,7 +25,7 @@ export async function removeFromCart({ productId, color }) {
   const session = await getSession();
 
   session.cartItems = session.cartItems.filter(
-    (item) => item.productId !== productId && item.color !== color
+    (item) => item.productId !== productId || item.color !== color
   );
 
   await session.save();
