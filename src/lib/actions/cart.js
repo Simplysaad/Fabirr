@@ -17,7 +17,6 @@ export async function addToCart({ name, productId, quantity = 1, color, amount }
   }
   
   await session.save();
-  // console.log(session)
   revalidatePath("/cart");
 }
 

@@ -5,6 +5,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { getAllProducts, insertProducts } from "@/lib/db";
 import Product from "@/lib/models/product";
 import newProducts from "@/lib/seed";
+import { CreditCard, Globe, Globe2, Shield, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,7 +32,6 @@ const Homepage = async () => {
               Heritage craftsmanship meets modern grace. Discover our curated
               silk, chiffon, and jersey collections—designed for the Queen who
               leads with elegance.
-
               {/* Discover our curated collection of silk, chiffon, and jersey scarves. Crafted with care, designed for elegance. */}
             </p>
             <Link
@@ -75,8 +75,6 @@ const Homepage = async () => {
                   }}
                 />
               ))}
-
-              
             </div>
           </div>
         </section>
@@ -143,32 +141,61 @@ const Homepage = async () => {
         </section>
 
         {/* 5. NEWSLETTER & TRUST (New) */}
-        <section className="py-20 px-8 bg-stone-100">
-          <div className="container mx-auto text-center max-w-2xl space-y-8">
-            <h2 className="text-3xl font-serif text-red-900">
-              Join the Royalty
-            </h2>
-            <p className="text-gray-600">
-              Subscribe for early access to new drops and styling tips.
-            </p>
-            <form className="flex flex-col md:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded border focus:outline-red-400"
-              />
-              <button className="bg-red-900 text-white px-8 py-3 rounded hover:bg-black transition-all">
-                Subscribe
-              </button>
-            </form>
-            <div className="flex justify-center gap-8 pt-8 opacity-60 grayscale">
-              {/* Replace with actual icons */}
-              <span>Free Worldwide Shipping</span>
-              <span>Secure Checkout</span>
-              <span>100% Authentic</span>
-            </div>
-          </div>
-        </section>
+
+{/* 5. NEWSLETTER & TRUST (Redesigned) */}
+<section className="py-24 px-8 bg-white border-t border-stone-100">
+  <div className="container mx-auto max-w-4xl">
+    <div className="flex flex-col items-center text-center space-y-12">
+      
+      {/* Newsletter Content */}
+      <div className="space-y-4">
+        <h2 className="text-4xl md:text-5xl font-serif text-red-900 tracking-tight">
+          The <span className="italic">Royal</span> Registry
+        </h2>
+        <p className="text-stone-500 max-w-md mx-auto font-light leading-relaxed">
+          Be the first to experience limited edition drops, styling masterclasses, and exclusive "Queen-only" events.
+        </p>
+      </div>
+
+      {/* Elegant Form */}
+      <form className="w-full max-w-lg">
+        <div className="flex flex-col md:flex-row gap-0 border border-stone-200 focus-within:border-red-900 transition-colors duration-500">
+          <input
+            type="email"
+            placeholder="ENTER YOUR EMAIL ADDRESS"
+            className="flex-1 bg-transparent px-2 py-4 outline-none text-xs tracking-[0.2em] placeholder:text-stone-300"
+          />
+          <button className="bg-red-900 -transparent text-white px-8 py-4 text-xs font-bold tracking-[0.3em] uppercase hover:text-black transition-all">
+            Subscribe
+          </button>
+        </div>
+      </form>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full pt-12 border-t border-stone-50">
+        <div className="flex flex-col items-center space-y-3">
+          <Globe className="text-red-900/40 font-light" size={28} strokeWidth={1} />
+          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-bold">
+            Worldwide Delivery
+          </span>
+        </div>
+        <div className="flex flex-col items-center space-y-3">
+          <CreditCard className="text-red-900/40 font-light" size={28} strokeWidth={1} />
+          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-bold">
+            Secure Payment Vault
+          </span>
+        </div>
+        <div className="flex flex-col items-center space-y-3">
+          <ShieldCheck className="text-red-900/40 font-light" size={28} strokeWidth={1} />
+          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-bold">
+            Certified Authentic
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         {/* 6. FOOTER (New) */}
       </div>

@@ -5,7 +5,6 @@ import { Plus, Minus, ShoppingBag } from "lucide-react";
 import { addToCart } from "@/lib/actions/cart"; // Assuming this is your action import
 
 export default function InteractiveProductView({ product }) {
-  console.log("product", product);
   const [mainImage, setMainImage] = useState(product.image);
   const [selections, setSelections] = useState({});
   const [isLoading, setIsLoading] = useState(false);

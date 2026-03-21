@@ -2,12 +2,12 @@
 import getSession from "@/lib/session";
 import CartItem from "./CartItem";
 import EmptyCart from "./EmptyCart";
+import Link from "next/link";
 
 const page = async () => {
   const session = await getSession();
 
   const items = new Array(...session.cartItems);
-  console.log("\n items", items)
 
   const subtotal = items.reduce((acc, item) => {
     return acc + item.amount;
@@ -59,12 +59,14 @@ const page = async () => {
               </span>
             </div>
 
-            <button
-              disabled={items.length === 0}
-              className="w-full bg-red-900 disabled:bg-stone-600 hover:bg-black text-white py-4 uppercase tracking-[0.2em] text-xs transition-all duration-300"
-            >
-              Proceed to Checkout
-            </button>
+            <Link href="/checkout">
+              <button
+                disabled={items.length === 0}
+                className="w-full bg-red-900 disabled:bg-stone-600 hover:bg-black text-white py-4 uppercase tracking-[0.2em] text-xs transition-all duration-300"
+              >
+                Proceed to Checkout
+              </button>
+            </Link>
 
             <p className="text-[10px] text-stone-400 text-center uppercase tracking-tighter">
               Taxes calculated at checkout • Secure payment
