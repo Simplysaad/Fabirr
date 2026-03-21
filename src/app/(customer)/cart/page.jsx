@@ -7,10 +7,10 @@ const page = async () => {
   const session = await getSession();
 
   const items = new Array(...session.cartItems);
+  console.log("\n items", items)
 
-  // Corrected reduce logic
   const subtotal = items.reduce((acc, item) => {
-    return acc + item.amount * item.quantity;
+    return acc + item.amount;
   }, 0);
 
   return (

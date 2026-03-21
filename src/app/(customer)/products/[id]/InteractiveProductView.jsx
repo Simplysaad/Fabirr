@@ -42,6 +42,7 @@ export default function InteractiveProductView({ product }) {
         })
       );
 
+      window.location.href = "/";
       setSelections({});
       // Optional: Add a success toast here
     } catch (error) {

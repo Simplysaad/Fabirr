@@ -11,6 +11,7 @@ export async function addToCart({ name, productId, quantity = 1, color, amount }
 
   if (existingItem) {
     existingItem.quantity += quantity;
+    existingItem.amount += amount;
   } else {
     session.cartItems.push({ name, color, productId, quantity, amount });
   }
